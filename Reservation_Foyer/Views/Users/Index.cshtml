@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Reservation_Foyer.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1>Users List</h1>
+    <hr>
+</div>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New User</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+           
+                <th>Phone</th>
+              
+                <th>Sex</th>
+                <th>University</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Where(u => u.Role == 0))
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                 
+                    <td>@user.Phone</td>
+                  
+                    <td>@(user.Sex == 1 ? "Male" : "Female")</td>
+                    <td><a href="@Url.Action("Details", "Universites", new { id = user.Universite.Id })">@user.Universite.Name</a></td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-primary btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@user.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

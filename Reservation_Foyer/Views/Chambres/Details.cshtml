@@ -1,0 +1,60 @@
+﻿@model Reservation_Foyer.Models.Chambre
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Details Chambre</h1>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Bloc)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Bloc)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Discription)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Discription)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Capacite)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Capacite)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <h1>Users in this room</h1>
+            <hr />
+            @foreach (var user in Model.Users)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">@user.Name</h5>
+                        <p class="card-text">@user.Email</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

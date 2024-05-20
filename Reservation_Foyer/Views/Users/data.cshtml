@@ -1,0 +1,120 @@
+﻿@model Reservation_Foyer.Models.User
+
+@{
+    Layout = null; // Disable layout
+    ViewData["Title"] = "data";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Reservation_Foyer</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        /* Custom styles for header */
+        header {
+            background-color: #007bff; /* Blue header */
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Custom styles for footer */
+        footer {
+            background-color: #f8f9fa; /* Light gray footer */
+            color: #212529; /* Dark text */
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Custom styles for cards */
+        .card {
+            transition: transform 0.3s ease-in-out;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+            }
+    </style>
+</head>
+<body>
+    <!-- New Header -->
+    <header>
+        <div class="container">
+            <h1>User Details</h1>
+        </div>
+    </header>
+
+    <!-- Content Area -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Personal Information</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">Name:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+                            <dt class="col-sm-4">Email:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+                            <dt class="col-sm-4">Address:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Adress)</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Additional Information</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">Phone:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Phone)</dd>
+                            <dt class="col-sm-4">CIN:</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Cin)</dd>
+                            <dt class="col-sm-4">Sex:</dt>
+                            <dd class="col-sm-8">
+                                @{
+                                    var sex = Model.Sex == 1 ? "Male" : (Model.Sex == 2 ? "Female" : "");
+                                    @sex
+                                }
+                            </dd>
+                            <div class="form-group">
+                                <label asp-for="Universite" class="control-label"></label>
+                                <select asp-for="UniversiteId" class="form-control" asp-items="ViewBag.Universites" disabled></select>
+                                
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Chambre" class="control-label"></label>
+                                <select asp-for="ChambreId" class="form-control" asp-items="ViewBag.Chambres" disabled></select>
+                                <span asp-validation-for="ChambreId" class="text-danger"></span>
+                            </div>
+                         
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 - Reservation Foyer</p>
+            <p>Développé par <a href="https://www.linkedin.com/in/hlel-med-amine-24ba86299/" class="text-dark" target="_blank">Med Amine Hlel</a> et <a href="https://www.linkedin.com/in/ariij-mahmoudi/" class="text-dark" target="_blank">Ariij Mahmoudi</a></p>
+            <p>Contactez-nous : <a href="mailto:mohamedhlel321@gmail.com" class="text-dark">mohamedhlel321@gmail.com</a>, <a href="mailto:arijmahmoudi2225@gmail.com" class="text-dark">ariij@example.com</a></p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

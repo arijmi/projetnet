@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Reservation_Foyer</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Reservation_Foyer.styles.css" asp-append-version="true" />
+    <style>
+        /* Custom styles for header */
+        header {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff; /* text color white */
+        }
+
+        .navbar-collapse {
+            color: #fff;
+            justify-content: space-between;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff; /* text color white */
+        }
+
+        .logout-button {
+            margin-left: auto;
+        }
+
+        /* Custom styles for footer */
+        footer {
+            background-color: #000;
+           
+            text-align: center;
+            color: #fff; /* text color white */
+        }
+        li{
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color: #fff;">Reservation Foyer</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1" >
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Chambres" asp-action="Index" style="color: #fff;">Chambres</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Foyers" asp-action="Index" style="color: #fff;">Foyers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Universites" asp-action="Index" style="color: #fff;">Universites</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index" style="color: #fff;">Users</a>
+                        </li>
+                    </ul>
+                 
+                    <a asp-controller="Login" asp-action="Login" class="btn btn-danger">Logoutt</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-white">
+        <div class="container">
+            &copy; 2024 - Reservation Foyer
+            Développé par <a href="https://www.linkedin.com/in/hlel-med-amine-24ba86299/" class="text-white" target="_blank">Med Amine Hlel</a> et <a href="https://www.linkedin.com/in/ariij-mahmoudi/" class="text-white" target="_blank">Ariij Mahmoudi</a>
+            Contactez-nous : <a href="mailto:mohamedhlel321@gmail.com" class="text-white">mohamedhlel321@gmail.com</a>, <a href="mailto:ariij@example.com" class="text-white">ariij@example.com</a>
+
+            
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

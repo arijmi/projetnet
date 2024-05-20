@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Reservation_Foyer.Models.Chambre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1>Liste des Chambres</h1>
+    <hr class="my-4">
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-left mb-4">
+            <p>
+                <a asp-action="Create" class="btn btn-primary btn-lg" style="border: 2px solid black;">Ajouter un chambre</a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">Bloc: @Html.DisplayFor(modelItem => item.Bloc)</p>
+                        <p class="card-text">Description: @Html.DisplayFor(modelItem => item.Discription)</p>
+                        <p class="card-text">Capacité: @Html.DisplayFor(modelItem => item.Capacite)</p>
+                        <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary">Details</a>
+                        <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-secondary">Edit</a>
+                        <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
